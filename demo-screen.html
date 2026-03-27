@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tal5is Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #1a1b26;
+            --sidebar: #16161e;
+            --accent: #7aa2f7;
+            --text: #c0caf5;
+            --text-dark: #a9b1d6;
+            --glass: rgba(65, 72, 104, 0.2);
+            --border: rgba(122, 162, 247, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) var(--bg);
+        }
+
+        .app-root {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            height: 100%;
+            width: 100%;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background: var(--sidebar);
+            border-right: 1px solid var(--border);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-item {
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 28px;
+            cursor: pointer;
+            width: max-content;
+            position: relative;
+            left: -16px;
+            transition: 0.2s;
+            color: var(--text-dark);
+        }
+
+        .nav-item.active {
+            background: var(--glass);
+            color: var(--accent);
+        }
+
+        .nav-item:hover {
+            background: var(--glass);
+        }
+
+        /* Main Content */
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--text-dark);
+            font-size: 14px;
+        }
+
+        /* Summary Card */
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            backdrop-filter: blur(8px);
+            margin-bottom: 24px;
+        }
+
+        .card h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card h2::before {
+            content: '✨';
+        }
+
+        .card p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 24px;
+            font-size: 20px;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .bullet-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Chat Input */
+        .chat-container {
+            margin-top: auto;
+            position: relative;
+        }
+
+        .chat-input {
+            width: 100%;
+            background: var(--sidebar);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            color: var(--text);
+            outline: none;
+            font-size: 20px;
+        }
+
+        .chat-input::placeholder {
+            color: rgba(192, 202, 245, 0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Highlight box for key info */
+        .highlight-box {
+            background: rgba(122, 162, 247, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 16px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 20px;
+            color: var(--text);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-root">
+        <div class="sidebar">
+            <div class="logo">Tal5is Ext.</div>
+            <div class="nav-item active">📝 Summaries</div>
+            <div class="nav-item">📚 Course History</div>
+            <div class="nav-item">⚙️ Settings</div>
+            <img src="classroom.png" alt="classroom" height="200" width="auto">
+        </div>
+        <div class="content">
+            <div class="header">
+                <h1>Intro to Machine Learning</h1>
+                <p>Google Classroom Summary • Generated Just Now</p>
+            </div>
+            
+            <div class="card">
+                <h2>Key Takeaways</h2>
+                <div class="highlight-box">
+                    <p><strong>Assignment Due:</strong> Supervised Learning Project on Friday, 11:59 PM.</p>
+                </div>
+                <ul class="bullet-list">
+                    <li>Read chapters 4 and 5 in the textbook.</li>
+                    <li>Prof. Smith emphasized understanding Gradient Descent.</li>
+                    <li>Added 3 new PDF resources to syllabus material.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Core Concepts Discussed</h2>
+                <p>The lecture introduced the fundamentals of supervised learning and the difference between classification and regression.</p>
+                <ul class="bullet-list">
+                    <li><strong>Supervised Learning:</strong> Training a model on labeled data where the answer is known.</li>
+                    <li><strong>Feature Engineering:</strong> Selecting and transforming variables to improve accuracy.</li>
+                    <li><strong>Overfitting:</strong> When a model learns noise rather than the underlying pattern.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Attached Materials Summary</h2>
+                <p>Three files were uploaded with this announcement. Here is a quick breakdown:</p>
+                <ul class="bullet-list">
+                    <li><strong>Slide Deck (PDF):</strong> 45 pages covering gradient descent math. Focus on pages 15-20.</li>
+                    <li><strong>Dataset (CSV):</strong> Housing prices dataset for the upcoming homework.</li>
+                    <li><strong>Setup Guide (Docx):</strong> Python and Jupyter installation instructions.</li>
+                </ul>
+            </div>
+
+            <div class="chat-container">
+                <input type="text" class="chat-input" placeholder="Ask a question about this summary...">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
