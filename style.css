@@ -480,6 +480,9 @@ body {
     .hero-text {
         order: 1;
         padding-top: 40px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
     }
 
     .hero-canvas-wrap {

@@ -70,6 +70,7 @@ screenDiv.style.backgroundColor = '#1a1b26';
 screenDiv.style.pointerEvents = 'auto'; // Ensure interaction
 screenDiv.style.userSelect = 'auto'; // Ensure text selectability
 
+
 // Track hover on the HTML screen seamlessly
 screenDiv.addEventListener('mouseenter', () => isScreenHovered = true);
 screenDiv.addEventListener('mouseleave', () => isScreenHovered = false);
@@ -189,6 +190,8 @@ loader.load(
 const clock = new THREE.Clock();
 let currentWidth = 0;
 let currentHeight = 0;
+let hi = document.getElementById('ss');
+
 
 function animate() {
     requestAnimationFrame(animate);
@@ -213,6 +216,9 @@ function animate() {
 
     const isMobileViewport = window.innerWidth < 900;
     const delta = clock.getDelta();
+    const iw = window.innerWidth;
+    const isSmallMobile = iw < 425;
+    hi.style.marginLeft = isSmallMobile ? (-425*(425-iw)/iw)+'px' : '0';
 
     // Smoothly transition time speed based on hover state
     const isHovered = isScreenHovered || isMeshHovered;
